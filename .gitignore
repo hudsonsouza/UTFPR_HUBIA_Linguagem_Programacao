@@ -1,0 +1,21 @@
+# Ignorar pastas
+node_modules/  
+vendor/ 
+banco/
+img/
+hudson/
+
+
+# Ignorar arquivos de log  
+*.log  
+
+# Ignorar arquivos de configuração do sistema  
+.DS_Store  
+Thumbs.db  
+
+# Ignorar arquivos de ambiente  
+.env  
+
+# Ignorar arquivos de compilação  
+dist/  
+build/
