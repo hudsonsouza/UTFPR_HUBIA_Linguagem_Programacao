@@ -3,7 +3,7 @@ node_modules/
 vendor/ 
 banco/
 img/
-hudson
+hudson/
 
 
 # Ignorar arquivos de log  
