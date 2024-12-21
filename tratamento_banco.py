@@ -243,3 +243,8 @@ plt.yticks(range(len(correlacao.columns)), correlacao.columns)
 plt.title('Matriz de Correlação')  
 plt.show()  
 
+
+
+### EXPORTAR O BANCO DE DADOS
+print('\n\n### EXPORTAR O BANCO DE DADOS ###\n\n')
+dados1.to_csv('banco/banco_bombeiros5.csv', sep=';', index=False)
