@@ -250,7 +250,9 @@ plt.show()
 
 
 ### EXPORTAR O BANCO DE DADOS
+
 print('\n\n### EXPORTAR O BANCO DE DADOS ###\n\n')
 dados1.to_csv('banco/banco_bombeiros-dados-tratados-2.csv', sep=';', index=False)
-print('Banco de dados exportado com sucesso!')
+print('Banco de dados exportado com sucesso!\n')
 print(f'Caminho do arquivo: {os.path.abspath("banco/banco_bombeiros-dados-tratados-2.csv")}')
+
