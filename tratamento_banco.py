@@ -1,14 +1,15 @@
 # 01 - TRATAMENTO DO BANCO DE DADOS
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import os 
+# import numpy as np
 
 # Ajustar a configuração do Pandas para mostrar todas as colunas com o comando 'head()'
 pd.set_option('display.max_columns', None)  
 
 
 # 02 - LEITURA DO BANCO DE DADOS
-dados1 = pd.read_csv('banco/banco_bombeiros4.csv', sep=';')
+dados1 = pd.read_csv('banco/banco_bombeiros-dados-brutos-1.csv', sep=';')
 
 # IMPRIMIR OS PRIMEIROS 20 REGISTROS
 print('\n### DADOS DO BANCO DE DADOS ORIGINAL ###')
@@ -58,19 +59,22 @@ print('\nContagem de valores nulls em cada coluna:')
 print(null_counts)
 
 
-# SUBSTITUIR VALORES NULOS PELA MEDIANA
-print('\n\n### SUBSTITUIR VALORES NULOS PELA MEDIANA ###\n\n')
+# SUBSTITUIR VALORES NULOS PELA MEDIANA  
+print('\n\n### SUBSTITUIR VALORES NULOS PELA MEDIANA ###\n\n')  
 
-# Substituir valores nulos pela mediana apenas em colunas numéricas
-for coluna in dados1.select_dtypes(include=[np.number]).columns:
-    mediana = dados1[coluna].median()
-    dados1[coluna].fillna(mediana, inplace=True)
+# VERIFICA SE HÁ VALORES NULOS  
+if dados1.isnull().values.any():       
+    # Substituir valores nulos pela mediana apenas em colunas numéricas  
+    for coluna in dados1.select_dtypes(include=[np.number]).columns:  
+        mediana = dados1[coluna].median()  
+        dados1[coluna].fillna(mediana, inplace=True)  
 
-# Verificar se ainda há valores nulos
-null_counts_after = dados1.isnull().sum()
-print('Contagem de valores nulls após substituição:')
-print(null_counts_after)
-
+    # Verificar se ainda há valores nulos  
+    null_counts_after = dados1.isnull().sum()  
+    print('Contagem de valores nulls após substituição:')  
+    print(null_counts_after)  
+else:   
+    print('Nenhum valor nulo encontrado na base de dados.')
 
 ### CATEGORIZACAO DAS VARIAVEIS
 
@@ -95,7 +99,7 @@ dados1 = dados1[colunas]
 print(dados1.head())  
 
 # Remover colunas desnecessárias
-dados1 = dados1.drop(columns=['avaliado'])
+dados1 = dados1.drop(columns=['num','avaliado'])
 
 # Atualizar a lista de colunas  
 colunas = dados1.columns.tolist()
@@ -215,7 +219,7 @@ print(dados1.dtypes)
 
 # Especificar as colunas que você deseja incluir na matriz de correlação  
 colunas_para_correlacao = ['idade', 
-                           'Tempo-exposicao-sdi', 
+                           'tempo-exposicao-sdi', 
                            'peso_diferenca',
                            'pa_diferenca_sist',
                            'pa_diferenca_diast',
@@ -247,4 +251,6 @@ plt.show()
 
 ### EXPORTAR O BANCO DE DADOS
 print('\n\n### EXPORTAR O BANCO DE DADOS ###\n\n')
-dados1.to_csv('banco/banco_bombeiros5.csv', sep=';', index=False)
+dados1.to_csv('banco/banco_bombeiros-dados-tratados-2.csv', sep=';', index=False)
+print('Banco de dados exportado com sucesso!')
+print(f'Caminho do arquivo: {os.path.abspath("banco/banco_bombeiros-dados-tratados-2.csv")}')
