@@ -91,6 +91,8 @@ estatisticas_descritivas(dados3['sat_o2_diferenca'], "Variação Saturação Oxi
 estatisticas_descritivas(dados3['ar_cilindro_diferenca'], "Variação AR no Cilindro")  
 
 
+# Lista de variáveis numéricas  
+numerical_vars = ['idade', 'tempo_exposicao_sdi', 'peso_diferenca', 'pa_diferenca_sist', 'pa_diferenca_diast', 'fc_diferenca', 'sat_o2_diferenca', 'ar_cilindro_diferenca']  
 
 
 ### MOSTRA O GRAFICO NA TELA, E SALVA O GRAFICO NA PASTA APÓS FECHAR A JANELA ###
@@ -140,9 +142,6 @@ sns.set(style="whitegrid")
 
 # Caminho para salvar os gráficos  
 caminho_salvar = "/home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/banco/img/"  
-
-# Lista de variáveis numéricas  
-numerical_vars = ['idade', 'tempo_exposicao_sdi', 'peso_diferenca', 'pa_diferenca_sist', 'pa_diferenca_diast', 'fc_diferenca', 'sat_o2_diferenca', 'ar_cilindro_diferenca']  
 
 # Loop para plotar e salvar histogramas  
 for var in numerical_vars:  
