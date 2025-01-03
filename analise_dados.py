@@ -1,94 +1,132 @@
-import pandas as pd  
 import numpy as np  
 import matplotlib.pyplot as plt  
-# conda install seaborn  
-#import seaborn as sns  
+import seaborn as sns  
+import os  
 
-#print(sns.__version__)  # Isso deve imprimir a versão do Seaborn instalada
+# 1. Carregar os dados corretamente  
+# Supondo que o arquivo CSV tenha cabeçalhos e os dados estejam no formato correto  
+dados2 = np.genfromtxt('banco/banco_bombeiros-dados-tratados-2.csv', delimiter=',', skip_header=0, names=True, dtype=None, encoding=None)  
+
+print('\nNomes das colunas do Banco de Dados Original:')
+print(dados2.dtype.names) 
+
+print('\nTipos das colunas do Banco de Dados:')
+print(dados2.dtype)
+
+print('\nConteudo das colunas do Banco de Dados:') 
+print(dados2[:10]) 
 
 
-# Ajustar a configuração do Pandas para mostrar todas as colunas com o comando 'head()'
-pd.set_option('display.max_columns', None) 
+print('\n### CONVERTENDO TIPOS DE DADOS ###\n')
 
 
-# 1. Carregar a base de dados  
-file_path = "banco/banco_bombeiros-dados-tratados-2.csv"  
-data = pd.read_csv(file_path)  
+# 2. Criar um novo array estruturado com os tipos desejados  
+dados3 = np.empty(dados2.shape, dtype=[  
+    ('idade', 'i8'),  
+    ('tempo_exposicao_sdi', 'i8'),  
+    ('peso_antes', 'f8'),  
+    ('peso_depois', 'f8'),  
+    ('peso_diferenca', 'f8'),  
+    ('pa_antes_sist', 'i8'),  
+    ('pa_antes_diast', 'i8'),  
+    ('pa_depois_sist', 'i8'),  
+    ('pa_depois_diast', 'i8'),  
+    ('pa_diferenca_sist', 'i8'),  
+    ('pa_diferenca_diast', 'i8'),  
+    ('fc_antes', 'i8'),  
+    ('fc_depois', 'i8'),  
+    ('fc_diferenca', 'i8'),  
+    ('sat_o2_antes', 'i8'),  
+    ('sat_o2_depois', 'i8'),  
+    ('sat_o2_diferenca', 'i8'),  
+    ('ar_cilindro_antes', 'i8'),  
+    ('ar_cilindro_depois', 'i8'),  
+    ('ar_cilindro_diferenca', 'i8')  
+])  
 
-# 2. Explorar os dados  
-print("Primeiras linhas do DataFrame:")  
-print(data.head())  
 
-print("\nInformações sobre o DataFrame:")  
-print(data.info())  
+# Substituir NaN e valores do tipo 'int' por 0 || 'float' por 0.0
+dados3['idade'] = np.nan_to_num(dados2['idade'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int
+dados3['tempo_exposicao_sdi'] = np.nan_to_num(dados2['tempo_exposicao_sdi'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['peso_antes'] = np.nan_to_num(dados2['peso_antes'], nan=0.0).astype('f8')  # Substitui NaN por 0.0 e converte para float  
+dados3['peso_depois'] = np.nan_to_num(dados2['peso_depois'], nan=0.0).astype('f8')  # Substitui NaN por 0.0 e converte para float  
+dados3['peso_diferenca'] = np.nan_to_num(dados2['peso_diferenca'], nan=0.0).astype('f8')  # Substitui NaN por 0.0 e converte para float  
+dados3['pa_antes_sist'] = np.nan_to_num(dados2['pa_antes_sist'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['pa_antes_diast'] = np.nan_to_num(dados2['pa_antes_diast'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['pa_depois_sist'] = np.nan_to_num(dados2['pa_depois_sist'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['pa_depois_diast'] = np.nan_to_num(dados2['pa_depois_diast'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['pa_diferenca_sist'] = np.nan_to_num(dados2['pa_diferenca_sist'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['pa_diferenca_diast'] = np.nan_to_num(dados2['pa_diferenca_diast'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['fc_antes'] = np.nan_to_num(dados2['fc_antes'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['fc_depois'] = np.nan_to_num(dados2['fc_depois'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['fc_diferenca'] = np.nan_to_num(dados2['fc_diferenca'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['sat_o2_antes'] = np.nan_to_num(dados2['sat_o2_antes'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['sat_o2_depois'] = np.nan_to_num(dados2['sat_o2_depois'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['sat_o2_diferenca'] = np.nan_to_num(dados2['sat_o2_diferenca'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['ar_cilindro_antes'] = np.nan_to_num(dados2['ar_cilindro_antes'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['ar_cilindro_depois'] = np.nan_to_num(dados2['ar_cilindro_depois'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
+dados3['ar_cilindro_diferenca'] = np.nan_to_num(dados2['ar_cilindro_diferenca'], nan=0).astype('i8')  # Substitui NaN por 0 e converte para int  
 
-print("\nVerificando valores nulos:")  
-print(data.isnull().sum())  
 
-print("\nVerificando tipos de dados:")  
-print(data.dtypes)
+# 4. Exibir o novo array com os tipos convertidos  
+print('\nTipos das colunas do Banco de Dados:')  
+print(dados3.dtype) 
 
-print("\nPrimeiras linhas do DataFrame:")
-print(data.head())  
+print('\nConteudo das colunas do Banco de Dados:') 
+print(dados2[:10]) 
 
-print("\nInformações da Descrição do DataFrame:")
-print(data.describe()) 
-
-# 3. Estatísticas descritivas  
-print("\nEstatísticas descritivas:")  
-descriptive_stats = data.describe()  
-print(descriptive_stats)  
-
-# 4. Análise com NumPy  
+# 5. Análise com NumPy  
 print("\nAnálise descritiva utilizando NumPy:")  
-numeric_data = data.select_dtypes(include=[np.number])  
+def estatisticas_descritivas(data, nome):  
+    print(f"{nome} - Média: {np.mean(data):.2f}, Mediana: {np.median(data):.2f}, Desvio Padrão: {np.std(data):.2f}")  
 
-# Cálculo de estatísticas  
-mean_values = np.mean(numeric_data, axis=0)  
-median_values = np.median(numeric_data, axis=0)  
-std_dev_values = np.std(numeric_data, axis=0)  
-min_values = np.min(numeric_data, axis=0)  
-max_values = np.max(numeric_data, axis=0)  
+# Calcular estatísticas descritivas  
+estatisticas_descritivas(dados3['idade'], "Idade")  
+estatisticas_descritivas(dados3['tempo_exposicao_sdi'], "Tempo Exposição SDI")  
+estatisticas_descritivas(dados3['peso_diferenca'], "Variação Peso")  
+estatisticas_descritivas(dados3['pa_diferenca_sist'], "Variação PA Sistólica")  
+estatisticas_descritivas(dados3['pa_diferenca_diast'], "Variação PA Diastólica")  
+estatisticas_descritivas(dados3['fc_diferenca'], "Variação Função Cardíaca")  
+estatisticas_descritivas(dados3['sat_o2_diferenca'], "Variação Saturação Oxigênio")  
+estatisticas_descritivas(dados3['ar_cilindro_diferenca'], "Variação AR no Cilindro")  
 
-# Exibir resultados  
-print("Média:\n", mean_values)  
-print("Mediana:\n", median_values)  
-print("Desvio Padrão:\n", std_dev_values)  
-print("Mínimos:\n", min_values)  
-print("Máximos:\n", max_values)  
 
-# 5. Identificação de outliers  
-# Usando o método do intervalo interquartil (IQR)  
-Q1 = np.percentile(numeric_data, 25, axis=0)  
-Q3 = np.percentile(numeric_data, 75, axis=0)  
-IQR = Q3 - Q1  
+### INICIA O CÓDIGO DE VISUALIZAÇÃO ###
 
-# Definindo limites para outliers  
-lower_bound = Q1 - 1.5 * IQR  
-upper_bound = Q3 + 1.5 * IQR  
+# Visualização  
+sns.set(style="whitegrid")  
+# Caminho para salvar os gráficos  
+caminho_salvar = "/home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/banco/"  
 
-outliers = ((numeric_data < lower_bound) | (numeric_data > upper_bound)).sum()  
-print("\nNúmero de outliers por coluna:\n", outliers)  
+# Lista de variáveis numéricas  
+numerical_vars = ['idade', 'tempo_exposicao_sdi', 'peso_diferenca', 'pa_diferenca_sist', 'pa_diferenca_diast', 'fc_diferenca', 'sat_o2_diferenca', 'ar_cilindro_diferenca']  
 
-# Verificar os tipos de dados  
-print("\nTipos de dados das colunas:")  
-print(data.dtypes)  
+# Loop para plotar e salvar histogramas  
+for var in numerical_vars:  
+    plt.figure(figsize=(10, 5))  # Ajuste o tamanho da figura conforme necessário  
+    try:  
+        sns.histplot(dados3[var], bins=20, kde=True)  
+        plt.title(f'Histograma de {var}')  
+        plt.xlabel(var)  
+        plt.ylabel('Frequência')  
+        
+        # Salvar o gráfico  
+        plt.savefig(os.path.join(caminho_salvar, f'histograma-{var}.png'))  
+        plt.close()  # Fecha a figura para liberar memória  
+    except Exception as e:  
+        print(f"Erro ao plotar Histograma {var}: {e}")  
 
-# Selecionar apenas colunas numéricas  
-numeric_data = data.select_dtypes(include=[np.number])  
-
-# Verificar se há colunas numéricas  
-if not numeric_data.empty:  
-    # Plotar o histograma para cada coluna numérica  
-    numeric_data.hist(bins=15, figsize=(15, 10))  
-    plt.suptitle('Distribuição das Variáveis Numéricas')  
-    plt.show()  
-else:  
-    print("Não há colunas numéricas para plotar.")  
-
-# Boxplot para identificar outliers  
-plt.figure(figsize=(15, 10))  
-# sns.boxplot(data=numeric_data)  
-plt.title('Boxplot das Variáveis Numéricas')  
-plt.xticks(rotation=45)  
-plt.show()
+# Loop para plotar e salvar boxplots  
+for var in numerical_vars:  
+    plt.figure(figsize=(10, 5))  # Ajuste o tamanho da figura conforme necessário  
+    try:  
+        sns.boxplot(y=dados3[var])  # Usando dados3 para o boxplot na vertical  
+        plt.title(f'Boxplot de {var}')  
+        plt.ylabel(var)  
+        plt.xlabel('')  # Rótulo do eixo x (opcional, pode ser deixado vazio)  
+        
+        # Salvar o gráfico  
+        plt.savefig(os.path.join(caminho_salvar, f'boxplot-{var}.png'))  
+        plt.close()  # Fecha a figura para liberar memória  
+    except Exception as e:  
+        print(f"Erro ao plotar Boxplots {var}: {e}") 
