@@ -91,12 +91,55 @@ estatisticas_descritivas(dados3['sat_o2_diferenca'], "Variação Saturação Oxi
 estatisticas_descritivas(dados3['ar_cilindro_diferenca'], "Variação AR no Cilindro")  
 
 
-### INICIA O CÓDIGO DE VISUALIZAÇÃO ###
 
-# Visualização  
+
+### MOSTRA O GRAFICO NA TELA, E SALVA O GRAFICO NA PASTA APÓS FECHAR A JANELA ###
+
+def plot_and_save_histogram(var):  
+    plt.figure(figsize=(10, 5))  
+    sns.histplot(dados3[var], bins=20, kde=True)  
+    plt.title(f'Histograma de {var}')  
+    plt.xlabel(var)  
+    plt.ylabel('Frequência')  
+    
+    # Exibir o gráfico  
+    plt.show()  
+    
+    # Salvar o gráfico após o fechamento da janela  
+    plt.savefig(os.path.join(caminho_salvar, f'histograma-{var}.png'))  
+    plt.close()  # Fecha a figura para liberar memória  
+
+def plot_and_save_boxplot(var):  
+    plt.figure(figsize=(10, 5))  
+    sns.boxplot(y=dados3[var])  # Usando dados3 para o boxplot na vertical  
+    plt.title(f'Boxplot de {var}')  
+    plt.ylabel(var)  
+    plt.xlabel('')  # Rótulo do eixo x (opcional, pode ser deixado vazio)  
+    
+    # Exibir o gráfico  
+    plt.show()  
+    
+    # Salvar o gráfico após o fechamento da janela  
+    plt.savefig(os.path.join(caminho_salvar, f'boxplot-{var}.png'))  
+    plt.close()  # Fecha a figura para liberar memória  
+
+# Loop para plotar e salvar histogramas  
+for var in numerical_vars:  
+    plot_and_save_histogram(var)  
+
+# Loop para plotar e salvar boxplots  
+for var in numerical_vars:  
+    plot_and_save_boxplot(var)  
+
+
+
+### NÃO MOSTRA O GRAFICO NA TELA, MAS SALVA AUTOMATICAMENTE NA PASTA ###
+
+# Tipo de Visualização  
 sns.set(style="whitegrid")  
+
 # Caminho para salvar os gráficos  
-caminho_salvar = "/home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/banco/"  
+caminho_salvar = "/home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/banco/img/"  
 
 # Lista de variáveis numéricas  
 numerical_vars = ['idade', 'tempo_exposicao_sdi', 'peso_diferenca', 'pa_diferenca_sist', 'pa_diferenca_diast', 'fc_diferenca', 'sat_o2_diferenca', 'ar_cilindro_diferenca']  
