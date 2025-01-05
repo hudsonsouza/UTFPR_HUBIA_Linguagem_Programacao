@@ -1,0 +1,692 @@
+
+
+
+
+#----------------------------------------
+### PARTE 1 - TRATAMENTO DOS DADOS
+
+/home/hudson/hudson2024/insync/site/miniconda3/bin/python /home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/tratamento_banco.py
+(base) hudson [~/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao] $ /home/hudson/hudson2024/insync/site/miniconda3/bin/python /home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/tratamento_banco.py
+
+### DADOS DO BANCO DE DADOS ORIGINAL ###
+Numero de Colunas..: 23
+Numero de Linhas...: 121
+
+Dados do Banco: 
+   num   avaliado genero  idade  tempo-exposicao-sdi peso_antes peso_depois  \
+0    1     Samuel      M     30                   34     74,650      73,650   
+1    2     Farias      M     30                   27     77,500      76,600   
+2    3   Venerato      M     22                   31     65,650      64,350   
+3    4  Guerreiro      M     20                   28     69,600      68,700   
+4    5     Danilo      M     32                   34     68,600      67,200   
+5    6   Castelão      M     25                   27     75,150      73,950   
+6    7     Tanoue      M     30                   34     72,300      71,550   
+7    8    Gobbato      M     25                   27     80,950      80,200   
+8    9      Leite      M     26                   31     94,800      93,100   
+9   10     Israel      M     28                   28     73,050      72,150   
+
+  peso_diferenca  pa_antes_sist  pa_antes_diast  pa_depois_sist  \
+0            0,0             90              60             110   
+1            0,0            120              80             110   
+2            0,0            110              70             110   
+3            0,0            120              70             110   
+4            0,0            100              60              90   
+5            0,0            100              60             100   
+6            0,0            120              70              90   
+7            0,0            100              70             110   
+8            0,0             90              60              90   
+9            0,0            110              70             100   
+
+   pa_depois_diast  pa_diferenca_sist  pa_diferenca_diast  fc_antes  \
+0               60                  0                   0        75   
+1               80                  0                   0        83   
+2               70                  0                   0        70   
+3               70                  0                   0        90   
+4               40                  0                   0        70   
+5               80                  0                   0       115   
+6               70                  0                   0        75   
+7               70                  0                   0        77   
+8               50                  0                   0        82   
+9               70                  0                   0        73   
+
+   fc_depois  fc_diferenca  sat_o2_antes  sat_o2_depois  sat_o2_diferenca  \
+0        115             0            95             91                 0   
+1        116             0            96             90                 0   
+2        118             0            94             94                 0   
+3        122             0            98             95                 0   
+4        130             0            97             92                 0   
+5        120             0            95             92                 0   
+6        143             0            97             95                 0   
+7        116             0            95             94                 0   
+8        120             0            95             93                 0   
+9         94             0            97             93                 0   
+
+   ar_cilindro_antes  ar_cilindro_depois ar_cilindro_diferenca  
+0                280                  20                   0,0  
+1                250                 100                   0,0  
+2                225                  90                   0,0  
+3                250                 130                   0,0  
+4                280                 100                   0,0  
+5                250                  50                   0,0  
+6                280                 100                   0,0  
+7                250                  75                   0,0  
+8                295                 105                   0,0  
+9                260                 120                   0,0  
+
+Nomes das variáveis da base de dados:
+['num', 'avaliado', 'genero', 'idade', 'tempo-exposicao-sdi', 'peso_antes', 'peso_depois', 'peso_diferenca', 'pa_antes_sist', 'pa_antes_diast', 'pa_depois_sist', 'pa_depois_diast', 'pa_diferenca_sist', 'pa_diferenca_diast', 'fc_antes', 'fc_depois', 'fc_diferenca', 'sat_o2_antes', 'sat_o2_depois', 'sat_o2_diferenca', 'ar_cilindro_antes', 'ar_cilindro_depois', 'ar_cilindro_diferenca']
+
+Descrição da base de dados:
+              num       idade  tempo-exposicao-sdi  pa_antes_sist  \
+count  121.000000  121.000000           121.000000     121.000000   
+mean    61.000000   27.851240            31.793388     122.190083   
+std     35.073732    4.751598             4.016461      13.305584   
+min      1.000000   19.000000            25.000000      90.000000   
+25%     31.000000   25.000000            28.000000     120.000000   
+50%     61.000000   28.000000            31.000000     120.000000   
+75%     91.000000   30.000000            35.000000     130.000000   
+max    121.000000   47.000000            38.000000     160.000000   
+
+       pa_antes_diast  pa_depois_sist  pa_depois_diast  pa_diferenca_sist  \
+count      121.000000      121.000000       121.000000              121.0   
+mean        79.669421      117.446281        75.041322                0.0   
+std          9.741140       16.566508        10.963878                0.0   
+min         60.000000       13.000000        40.000000                0.0   
+25%         80.000000      110.000000        70.000000                0.0   
+50%         80.000000      120.000000        80.000000                0.0   
+75%         90.000000      130.000000        80.000000                0.0   
+max        110.000000      160.000000       100.000000                0.0   
+
+       pa_diferenca_diast    fc_antes   fc_depois  fc_diferenca  sat_o2_antes  \
+count               121.0  121.000000  121.000000         121.0    121.000000   
+mean                  0.0   80.528926  126.504132           0.0     96.950413   
+std                   0.0   11.523942   22.967050           0.0      1.321938   
+min                   0.0   56.000000   75.000000           0.0     93.000000   
+25%                   0.0   72.000000  112.000000           0.0     96.000000   
+50%                   0.0   79.000000  128.000000           0.0     97.000000   
+75%                   0.0   89.000000  142.000000           0.0     98.000000   
+max                   0.0  115.000000  190.000000           0.0     99.000000   
+
+       sat_o2_depois  sat_o2_diferenca  ar_cilindro_antes  ar_cilindro_depois  
+count     121.000000             121.0         121.000000          121.000000  
+mean       94.884298               0.0         241.074380           95.082645  
+std         1.771017               0.0          24.598498           41.822958  
+min        89.000000               0.0         120.000000            0.000000  
+25%        94.000000               0.0         230.000000           70.000000  
+50%        95.000000               0.0         250.000000          100.000000  
+75%        96.000000               0.0         250.000000          120.000000  
+max        99.000000               0.0         300.000000          200.000000  
+
+Tipos de dados das colunas:
+num                       int64
+avaliado                 object
+genero                   object
+idade                     int64
+tempo-exposicao-sdi       int64
+peso_antes               object
+peso_depois              object
+peso_diferenca           object
+pa_antes_sist             int64
+pa_antes_diast            int64
+pa_depois_sist            int64
+pa_depois_diast           int64
+pa_diferenca_sist         int64
+pa_diferenca_diast        int64
+fc_antes                  int64
+fc_depois                 int64
+fc_diferenca              int64
+sat_o2_antes              int64
+sat_o2_depois             int64
+sat_o2_diferenca          int64
+ar_cilindro_antes         int64
+ar_cilindro_depois        int64
+ar_cilindro_diferenca    object
+dtype: object
+peso_antes        float64
+peso_depois       float64
+peso_diferenca    float64
+dtype: object
+
+Tipos de dados das colunas:
+num                        int64
+avaliado                  object
+genero                    object
+idade                      int64
+tempo-exposicao-sdi        int64
+peso_antes               float64
+peso_depois              float64
+peso_diferenca           float64
+pa_antes_sist              int64
+pa_antes_diast             int64
+pa_depois_sist             int64
+pa_depois_diast            int64
+pa_diferenca_sist          int64
+pa_diferenca_diast         int64
+fc_antes                   int64
+fc_depois                  int64
+fc_diferenca               int64
+sat_o2_antes               int64
+sat_o2_depois              int64
+sat_o2_diferenca           int64
+ar_cilindro_antes          int64
+ar_cilindro_depois         int64
+ar_cilindro_diferenca     object
+dtype: object
+peso_antes        float64
+peso_depois       float64
+peso_diferenca    float64
+dtype: object
+
+Contagem de valores nulls em cada coluna:
+num                      0
+avaliado                 0
+genero                   0
+idade                    0
+tempo-exposicao-sdi      0
+peso_antes               0
+peso_depois              0
+peso_diferenca           0
+pa_antes_sist            0
+pa_antes_diast           0
+pa_depois_sist           0
+pa_depois_diast          0
+pa_diferenca_sist        0
+pa_diferenca_diast       0
+fc_antes                 0
+fc_depois                0
+fc_diferenca             0
+sat_o2_antes             0
+sat_o2_depois            0
+sat_o2_diferenca         0
+ar_cilindro_antes        0
+ar_cilindro_depois       0
+ar_cilindro_diferenca    0
+dtype: int64
+
+
+### SUBSTITUIR VALORES NULOS PELA MEDIANA ###
+
+
+Nenhum valor nulo encontrado na base de dados.
+   num   avaliado combatente genero  idade  tempo-exposicao-sdi  peso_antes  \
+0    1     Samuel  Avaliado1      M     30                   34       74.65   
+1    2     Farias  Avaliado2      M     30                   27       77.50   
+2    3   Venerato  Avaliado3      M     22                   31       65.65   
+3    4  Guerreiro  Avaliado4      M     20                   28       69.60   
+4    5     Danilo  Avaliado5      M     32                   34       68.60   
+
+   peso_depois  peso_diferenca  pa_antes_sist  pa_antes_diast  pa_depois_sist  \
+0        73.65             0.0             90              60             110   
+1        76.60             0.0            120              80             110   
+2        64.35             0.0            110              70             110   
+3        68.70             0.0            120              70             110   
+4        67.20             0.0            100              60              90   
+
+   pa_depois_diast  pa_diferenca_sist  pa_diferenca_diast  fc_antes  \
+0               60                  0                   0        75   
+1               80                  0                   0        83   
+2               70                  0                   0        70   
+3               70                  0                   0        90   
+4               40                  0                   0        70   
+
+   fc_depois  fc_diferenca  sat_o2_antes  sat_o2_depois  sat_o2_diferenca  \
+0        115             0            95             91                 0   
+1        116             0            96             90                 0   
+2        118             0            94             94                 0   
+3        122             0            98             95                 0   
+4        130             0            97             92                 0   
+
+   ar_cilindro_antes  ar_cilindro_depois ar_cilindro_diferenca  
+0                280                  20                   0,0  
+1                250                 100                   0,0  
+2                225                  90                   0,0  
+3                250                 130                   0,0  
+4                280                 100                   0,0  
+  combatente genero  idade  tempo-exposicao-sdi  peso_antes  peso_depois  \
+0  Avaliado1      M     30                   34       74.65        73.65   
+1  Avaliado2      M     30                   27       77.50        76.60   
+2  Avaliado3      M     22                   31       65.65        64.35   
+3  Avaliado4      M     20                   28       69.60        68.70   
+4  Avaliado5      M     32                   34       68.60        67.20   
+
+   peso_diferenca  pa_antes_sist  pa_antes_diast  pa_depois_sist  \
+0             0.0             90              60             110   
+1             0.0            120              80             110   
+2             0.0            110              70             110   
+3             0.0            120              70             110   
+4             0.0            100              60              90   
+
+   pa_depois_diast  pa_diferenca_sist  pa_diferenca_diast  fc_antes  \
+0               60                  0                   0        75   
+1               80                  0                   0        83   
+2               70                  0                   0        70   
+3               70                  0                   0        90   
+4               40                  0                   0        70   
+
+   fc_depois  fc_diferenca  sat_o2_antes  sat_o2_depois  sat_o2_diferenca  \
+0        115             0            95             91                 0   
+1        116             0            96             90                 0   
+2        118             0            94             94                 0   
+3        122             0            98             95                 0   
+4        130             0            97             92                 0   
+
+   ar_cilindro_antes  ar_cilindro_depois ar_cilindro_diferenca  
+0                280                  20                   0,0  
+1                250                 100                   0,0  
+2                225                  90                   0,0  
+3                250                 130                   0,0  
+4                280                 100                   0,0  
+
+
+### TRATAMENTO DE DADOS: PESO ###
+
+   peso_antes  peso_depois  peso_diferenca
+0       74.65        73.65             0.0
+1       77.50        76.60             0.0
+2       65.65        64.35             0.0
+3       69.60        68.70             0.0
+4       68.60        67.20             0.0
+   peso_antes  peso_depois  peso_diferenca
+0       74.65        73.65            -1.0
+1       77.50        76.60            -0.9
+2       65.65        64.35            -1.3
+3       69.60        68.70            -0.9
+4       68.60        67.20            -1.4
+
+
+### TRATAMENTO DE DADOS: PRESSÃO ARTERIAL (PA) ###
+
+   pa_antes_sist  pa_depois_sist  pa_diferenca_sist
+0             90             110                 20
+1            120             110                -10
+2            110             110                  0
+3            120             110                -10
+4            100              90                -10
+5            100             100                  0
+6            120              90                -30
+7            100             110                 10
+8             90              90                  0
+9            110             100                -10
+
+
+   pa_antes_diast  pa_depois_diast  pa_diferenca_diast
+0              60               60                   0
+1              80               80                   0
+2              70               70                   0
+3              70               70                   0
+4              60               40                 -20
+5              60               80                  20
+6              70               70                   0
+7              70               70                   0
+8              60               50                 -10
+9              70               70                   0
+
+
+### TRATAMENTO DE DADOS: FREQUENCIA CARDIACA (FC) ###
+
+   fc_antes  fc_depois  fc_diferenca
+0        75        115            40
+1        83        116            33
+2        70        118            48
+3        90        122            32
+4        70        130            60
+5       115        120             5
+6        75        143            68
+7        77        116            39
+8        82        120            38
+9        73         94            21
+
+
+### TRATAMENTO DE DADOS: SATURAÇÃO DE OXIGÊNIO (O2) ###
+
+   sat_o2_antes  sat_o2_depois  sat_o2_diferenca
+0            95             91                -4
+1            96             90                -6
+2            94             94                 0
+3            98             95                -3
+4            97             92                -5
+5            95             92                -3
+6            97             95                -2
+7            95             94                -1
+8            95             93                -2
+9            97             93                -4
+
+
+### TRATAMENTO DE DADOS: AR CILINDRO (AC)  ###
+
+   ar_cilindro_antes  ar_cilindro_depois ar_cilindro_diferenca
+0                280                  20                   0,0
+1                250                 100                   0,0
+2                225                  90                   0,0
+3                250                 130                   0,0
+4                280                 100                   0,0
+5                250                  50                   0,0
+6                280                 100                   0,0
+7                250                  75                   0,0
+8                295                 105                   0,0
+9                260                 120                   0,0
+ar_cilindro_antes          int64
+ar_cilindro_depois         int64
+ar_cilindro_diferenca    float64
+dtype: object
+   ar_cilindro_antes  ar_cilindro_depois  ar_cilindro_diferenca
+0                280                  20                    0.0
+1                250                 100                    0.0
+2                225                  90                    0.0
+3                250                 130                    0.0
+4                280                 100                    0.0
+5                250                  50                    0.0
+6                280                 100                    0.0
+7                250                  75                    0.0
+8                295                 105                    0.0
+9                260                 120                    0.0
+   ar_cilindro_antes  ar_cilindro_depois  ar_cilindro_diferenca
+0                280                  20                   -260
+1                250                 100                   -150
+2                225                  90                   -135
+3                250                 130                   -120
+4                280                 100                   -180
+5                250                  50                   -200
+6                280                 100                   -180
+7                250                  75                   -175
+8                295                 105                   -190
+9                260                 120                   -140
+
+Tipos de dados das colunas:
+combatente                object
+genero                    object
+idade                      int64
+tempo-exposicao-sdi        int64
+peso_antes               float64
+peso_depois              float64
+peso_diferenca           float64
+pa_antes_sist              int64
+pa_antes_diast             int64
+pa_depois_sist             int64
+pa_depois_diast            int64
+pa_diferenca_sist          int64
+pa_diferenca_diast         int64
+fc_antes                   int64
+fc_depois                  int64
+fc_diferenca               int64
+sat_o2_antes               int64
+sat_o2_depois              int64
+sat_o2_diferenca           int64
+ar_cilindro_antes          int64
+ar_cilindro_depois         int64
+ar_cilindro_diferenca      int64
+dtype: object
+
+
+### EXPORTAR O BANCO DE DADOS ###
+
+
+Banco de dados exportado com sucesso!
+
+Caminho do arquivo: /home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/banco/banco_bombeiros-dados-tratados-2.csv
+
+
+
+
+#-----------------------------------------
+### PARTE 2 - ANALISE DOS DADOS COM NUMPY
+
+# SAÍDAS:
+
+/home/hudson/hudson2024/insync/site/miniconda3/bin/python /home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/analise_dados.py
+(base) hudson [~/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao] $ /home/hudson/hudson2024/insync/site/miniconda3/bin/python /home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/analise_dados.py
+
+Nomes das colunas do Banco de Dados Original:
+('idade', 'tempo_exposicao_sdi', 'peso_antes', 'peso_depois', 'peso_diferenca', 'pa_antes_sist', 'pa_antes_diast', 'pa_depois_sist', 'pa_depois_diast', 'pa_diferenca_sist', 'pa_diferenca_diast', 'fc_antes', 'fc_depois', 'fc_diferenca', 'sat_o2_antes', 'sat_o2_depois', 'sat_o2_diferenca', 'ar_cilindro_antes', 'ar_cilindro_depois', 'ar_cilindro_diferenca')
+
+Tipos das colunas do Banco de Dados:
+[('idade', '<i8'), ('tempo_exposicao_sdi', '<i8'), ('peso_antes', '<f8'), ('peso_depois', '<f8'), ('peso_diferenca', '<f8'), ('pa_antes_sist', '<i8'), ('pa_antes_diast', '<i8'), ('pa_depois_sist', '<i8'), ('pa_depois_diast', '<i8'), ('pa_diferenca_sist', '<i8'), ('pa_diferenca_diast', '<i8'), ('fc_antes', '<i8'), ('fc_depois', '<i8'), ('fc_diferenca', '<i8'), ('sat_o2_antes', '<i8'), ('sat_o2_depois', '<i8'), ('sat_o2_diferenca', '<i8'), ('ar_cilindro_antes', '<i8'), ('ar_cilindro_depois', '<i8'), ('ar_cilindro_diferenca', '<i8')]
+
+Conteudo das colunas do Banco de Dados:
+[(30, 34, 74.65, 73.65, -1.  ,  90, 60, 110, 60,  20,   0,  75, 115, 40, 95, 91, -4, 280,  20, -260)
+ (30, 27, 77.5 , 76.6 , -0.9 , 120, 80, 110, 80, -10,   0,  83, 116, 33, 96, 90, -6, 250, 100, -150)
+ (22, 31, 65.65, 64.35, -1.3 , 110, 70, 110, 70,   0,   0,  70, 118, 48, 94, 94,  0, 225,  90, -135)
+ (20, 28, 69.6 , 68.7 , -0.9 , 120, 70, 110, 70, -10,   0,  90, 122, 32, 98, 95, -3, 250, 130, -120)
+ (32, 34, 68.6 , 67.2 , -1.4 , 100, 60,  90, 40, -10, -20,  70, 130, 60, 97, 92, -5, 280, 100, -180)
+ (25, 27, 75.15, 73.95, -1.2 , 100, 60, 100, 80,   0,  20, 115, 120,  5, 95, 92, -3, 250,  50, -200)
+ (30, 34, 72.3 , 71.55, -0.75, 120, 70,  90, 70, -30,   0,  75, 143, 68, 97, 95, -2, 280, 100, -180)
+ (25, 27, 80.95, 80.2 , -0.75, 100, 70, 110, 70,  10,   0,  77, 116, 39, 95, 94, -1, 250,  75, -175)
+ (26, 31, 94.8 , 93.1 , -1.7 ,  90, 60,  90, 50,   0, -10,  82, 120, 38, 95, 93, -2, 295, 105, -190)
+ (28, 28, 73.05, 72.15, -0.9 , 110, 70, 100, 70, -10,   0,  73,  94, 21, 97, 93, -4, 260, 120, -140)]
+
+### CONVERTENDO TIPOS DE DADOS ###
+
+
+Tipos das colunas do Banco de Dados:
+[('idade', '<i8'), ('tempo_exposicao_sdi', '<i8'), ('peso_antes', '<f8'), ('peso_depois', '<f8'), ('peso_diferenca', '<f8'), ('pa_antes_sist', '<i8'), ('pa_antes_diast', '<i8'), ('pa_depois_sist', '<i8'), ('pa_depois_diast', '<i8'), ('pa_diferenca_sist', '<i8'), ('pa_diferenca_diast', '<i8'), ('fc_antes', '<i8'), ('fc_depois', '<i8'), ('fc_diferenca', '<i8'), ('sat_o2_antes', '<i8'), ('sat_o2_depois', '<i8'), ('sat_o2_diferenca', '<i8'), ('ar_cilindro_antes', '<i8'), ('ar_cilindro_depois', '<i8'), ('ar_cilindro_diferenca', '<i8')]
+
+Conteudo das colunas do Banco de Dados:
+[(30, 34, 74.65, 73.65, -1.  ,  90, 60, 110, 60,  20,   0,  75, 115, 40, 95, 91, -4, 280,  20, -260)
+ (30, 27, 77.5 , 76.6 , -0.9 , 120, 80, 110, 80, -10,   0,  83, 116, 33, 96, 90, -6, 250, 100, -150)
+ (22, 31, 65.65, 64.35, -1.3 , 110, 70, 110, 70,   0,   0,  70, 118, 48, 94, 94,  0, 225,  90, -135)
+ (20, 28, 69.6 , 68.7 , -0.9 , 120, 70, 110, 70, -10,   0,  90, 122, 32, 98, 95, -3, 250, 130, -120)
+ (32, 34, 68.6 , 67.2 , -1.4 , 100, 60,  90, 40, -10, -20,  70, 130, 60, 97, 92, -5, 280, 100, -180)
+ (25, 27, 75.15, 73.95, -1.2 , 100, 60, 100, 80,   0,  20, 115, 120,  5, 95, 92, -3, 250,  50, -200)
+ (30, 34, 72.3 , 71.55, -0.75, 120, 70,  90, 70, -30,   0,  75, 143, 68, 97, 95, -2, 280, 100, -180)
+ (25, 27, 80.95, 80.2 , -0.75, 100, 70, 110, 70,  10,   0,  77, 116, 39, 95, 94, -1, 250,  75, -175)
+ (26, 31, 94.8 , 93.1 , -1.7 ,  90, 60,  90, 50,   0, -10,  82, 120, 38, 95, 93, -2, 295, 105, -190)
+ (28, 28, 73.05, 72.15, -0.9 , 110, 70, 100, 70, -10,   0,  73,  94, 21, 97, 93, -4, 260, 120, -140)]
+
+Análise descritiva utilizando NumPy:
+Idade - Média: 27.85, Mediana: 28.00, Desvio Padrão: 4.73
+Tempo Exposição SDI - Média: 31.79, Mediana: 31.00, Desvio Padrão: 4.00
+Variação Peso - Média: -0.98, Mediana: -0.90, Desvio Padrão: 0.39
+Variação PA Sistólica - Média: -4.74, Mediana: 0.00, Desvio Padrão: 17.07
+Variação PA Diastólica - Média: -4.63, Mediana: 0.00, Desvio Padrão: 11.36
+Variação Função Cardíaca - Média: 45.98, Mediana: 47.00, Desvio Padrão: 22.34
+Variação Saturação Oxigênio - Média: -2.07, Mediana: -2.00, Desvio Padrão: 1.62
+Variação AR no Cilindro - Média: -145.99, Mediana: -140.00, Desvio Padrão: 38.67
+(base) hudson [~/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao] $ 
+
+
+
+
+
+
+
+#-----------------------------------
+### PARTE 3 - VISUALIZAÇÃO GRAFICA
+
+
+# Arquivo: visualizacao_grafica.py
+
+
+# SAÍDAS:
+
+/home/hudson/hudson2024/insync/site/miniconda3/bin/python /home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/visualizacao_grafica.py
+(base) hudson [~/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao] $ /home/hudson/hudson2024/insync/site/miniconda3/bin/python /home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/visualizacao_grafica.py
+
+### VERSAOS DOS MODULOS ###
+Versão do Matplotlib..: 3.10.0
+Versão do Pandas......: 2.2.2
+Versão do Numpy.......: 1.26.4
+Versão do Seaborn.....: 0.13.2
+
+Verificando o Stilo disponivel no Matplotlib: ['Solarize_Light2', '_classic_test_patch', '_mpl-gallery', '_mpl-gallery-nogrid', 'bmh', 'classic', 'dark_background', 'fast', 'fivethirtyeight', 'ggplot', 'grayscale', 'petroff10', 'seaborn-v0_8', 'seaborn-v0_8-bright', 'seaborn-v0_8-colorblind', 'seaborn-v0_8-dark', 'seaborn-v0_8-dark-palette', 'seaborn-v0_8-darkgrid', 'seaborn-v0_8-deep', 'seaborn-v0_8-muted', 'seaborn-v0_8-notebook', 'seaborn-v0_8-paper', 'seaborn-v0_8-pastel', 'seaborn-v0_8-poster', 'seaborn-v0_8-talk', 'seaborn-v0_8-ticks', 'seaborn-v0_8-white', 'seaborn-v0_8-whitegrid', 'tableau-colorblind10']
+
+### DADOS DO BANCO DE DADOS ORIGINAL ###
+Numero de Colunas..: 22
+Numero de Linhas...: 121
+
+Dados do Banco: 
+   combatente genero  idade  tempo_exposicao_sdi  peso_antes  peso_depois  \
+0   Avaliado1      M     30                   34       74.65        73.65   
+1   Avaliado2      M     30                   27       77.50        76.60   
+2   Avaliado3      M     22                   31       65.65        64.35   
+3   Avaliado4      M     20                   28       69.60        68.70   
+4   Avaliado5      M     32                   34       68.60        67.20   
+5   Avaliado6      M     25                   27       75.15        73.95   
+6   Avaliado7      M     30                   34       72.30        71.55   
+7   Avaliado8      M     25                   27       80.95        80.20   
+8   Avaliado9      M     26                   31       94.80        93.10   
+9  Avaliado10      M     28                   28       73.05        72.15   
+
+   peso_diferenca  pa_antes_sist  pa_antes_diast  pa_depois_sist  \
+0           -1.00             90              60             110   
+1           -0.90            120              80             110   
+2           -1.30            110              70             110   
+3           -0.90            120              70             110   
+4           -1.40            100              60              90   
+5           -1.20            100              60             100   
+6           -0.75            120              70              90   
+7           -0.75            100              70             110   
+8           -1.70             90              60              90   
+9           -0.90            110              70             100   
+
+   pa_depois_diast  pa_diferenca_sist  pa_diferenca_diast  fc_antes  \
+0               60                 20                   0        75   
+1               80                -10                   0        83   
+2               70                  0                   0        70   
+3               70                -10                   0        90   
+4               40                -10                 -20        70   
+5               80                  0                  20       115   
+6               70                -30                   0        75   
+7               70                 10                   0        77   
+8               50                  0                 -10        82   
+9               70                -10                   0        73   
+
+   fc_depois  fc_diferenca  sat_o2_antes  sat_o2_depois  sat_o2_diferenca  \
+0        115            40            95             91                -4   
+1        116            33            96             90                -6   
+2        118            48            94             94                 0   
+3        122            32            98             95                -3   
+4        130            60            97             92                -5   
+5        120             5            95             92                -3   
+6        143            68            97             95                -2   
+7        116            39            95             94                -1   
+8        120            38            95             93                -2   
+9         94            21            97             93                -4   
+
+   ar_cilindro_antes  ar_cilindro_depois  ar_cilindro_diferenca  
+0                280                  20                   -260  
+1                250                 100                   -150  
+2                225                  90                   -135  
+3                250                 130                   -120  
+4                280                 100                   -180  
+5                250                  50                   -200  
+6                280                 100                   -180  
+7                250                  75                   -175  
+8                295                 105                   -190  
+9                260                 120                   -140  
+
+Nomes das variáveis da base de dados:
+['combatente', 'genero', 'idade', 'tempo_exposicao_sdi', 'peso_antes', 'peso_depois', 'peso_diferenca', 'pa_antes_sist', 'pa_antes_diast', 'pa_depois_sist', 'pa_depois_diast', 'pa_diferenca_sist', 'pa_diferenca_diast', 'fc_antes', 'fc_depois', 'fc_diferenca', 'sat_o2_antes', 'sat_o2_depois', 'sat_o2_diferenca', 'ar_cilindro_antes', 'ar_cilindro_depois', 'ar_cilindro_diferenca']
+
+Descrição da base de dados:
+            idade  tempo_exposicao_sdi  peso_antes  peso_depois  \
+count  121.000000           121.000000  121.000000   121.000000   
+mean    27.851240            31.793388   76.324793    75.340083   
+std      4.751598             4.016461    9.805957     9.652173   
+min     19.000000            25.000000   52.000000    51.000000   
+25%     25.000000            28.000000   70.900000    69.800000   
+50%     28.000000            31.000000   75.000000    73.950000   
+75%     30.000000            35.000000   81.500000    80.400000   
+max     47.000000            38.000000  107.200000   105.100000   
+
+       peso_diferenca  pa_antes_sist  pa_antes_diast  pa_depois_sist  \
+count      121.000000     121.000000      121.000000      121.000000   
+mean        -0.984711     122.190083       79.669421      117.446281   
+std          0.393533      13.305584        9.741140       16.566508   
+min         -2.100000      90.000000       60.000000       13.000000   
+25%         -1.300000     120.000000       80.000000      110.000000   
+50%         -0.900000     120.000000       80.000000      120.000000   
+75%         -0.700000     130.000000       90.000000      130.000000   
+max         -0.100000     160.000000      110.000000      160.000000   
+
+       pa_depois_diast  pa_diferenca_sist  pa_diferenca_diast    fc_antes  \
+count       121.000000         121.000000          121.000000  121.000000   
+mean         75.041322          -4.743802           -4.628099   80.528926   
+std          10.963878          17.142797           11.404774   11.523942   
+min          40.000000        -137.000000          -40.000000   56.000000   
+25%          70.000000         -10.000000          -10.000000   72.000000   
+50%          80.000000           0.000000            0.000000   79.000000   
+75%          80.000000           0.000000            0.000000   89.000000   
+max         100.000000          30.000000           20.000000  115.000000   
+
+        fc_depois  fc_diferenca  sat_o2_antes  sat_o2_depois  \
+count  121.000000    121.000000    121.000000     121.000000   
+mean   126.504132     45.975207     96.950413      94.884298   
+std     22.967050     22.437492      1.321938       1.771017   
+min     75.000000    -15.000000     93.000000      89.000000   
+25%    112.000000     32.000000     96.000000      94.000000   
+50%    128.000000     47.000000     97.000000      95.000000   
+75%    142.000000     61.000000     98.000000      96.000000   
+max    190.000000    102.000000     99.000000      99.000000   
+
+       sat_o2_diferenca  ar_cilindro_antes  ar_cilindro_depois  \
+count        121.000000         121.000000          121.000000   
+mean          -2.066116         241.074380           95.082645   
+std            1.626528          24.598498           41.822958   
+min           -8.000000         120.000000            0.000000   
+25%           -3.000000         230.000000           70.000000   
+50%           -2.000000         250.000000          100.000000   
+75%           -1.000000         250.000000          120.000000   
+max            0.000000         300.000000          200.000000   
+
+       ar_cilindro_diferenca  
+count             121.000000  
+mean             -145.991736  
+std                38.835228  
+min              -260.000000  
+25%              -170.000000  
+50%              -140.000000  
+75%              -120.000000  
+max               -70.000000  
+
+Tipos de dados das colunas:
+combatente                object
+genero                    object
+idade                      int64
+tempo_exposicao_sdi        int64
+peso_antes               float64
+peso_depois              float64
+peso_diferenca           float64
+pa_antes_sist              int64
+pa_antes_diast             int64
+pa_depois_sist             int64
+pa_depois_diast            int64
+pa_diferenca_sist          int64
+pa_diferenca_diast         int64
+fc_antes                   int64
+fc_depois                  int64
+fc_diferenca               int64
+sat_o2_antes               int64
+sat_o2_depois              int64
+sat_o2_diferenca           int64
+ar_cilindro_antes          int64
+ar_cilindro_depois         int64
+ar_cilindro_diferenca      int64
+dtype: object
+
+Contagem de valores nulls em cada coluna:
+combatente               0
+genero                   0
+idade                    0
+tempo_exposicao_sdi      0
+peso_antes               0
+peso_depois              0
+peso_diferenca           0
+pa_antes_sist            0
+pa_antes_diast           0
+pa_depois_sist           0
+pa_depois_diast          0
+pa_diferenca_sist        0
+pa_diferenca_diast       0
+fc_antes                 0
+fc_depois                0
+fc_diferenca             0
+sat_o2_antes             0
+sat_o2_depois            0
+sat_o2_diferenca         0
+ar_cilindro_antes        0
+ar_cilindro_depois       0
+ar_cilindro_diferenca    0
+dtype: int64
+(base) hudson [~/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao] $ 
+
+

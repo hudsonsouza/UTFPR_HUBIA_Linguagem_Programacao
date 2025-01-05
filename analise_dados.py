@@ -94,6 +94,8 @@ estatisticas_descritivas(dados3['ar_cilindro_diferenca'], "Variação AR no Cili
 # Lista de variáveis numéricas  
 numerical_vars = ['idade', 'tempo_exposicao_sdi', 'peso_diferenca', 'pa_diferenca_sist', 'pa_diferenca_diast', 'fc_diferenca', 'sat_o2_diferenca', 'ar_cilindro_diferenca']  
 
+# Caminho para salvar os gráficos  
+caminho_salvar = "/home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/banco/img/"  
 
 ### MOSTRA O GRAFICO NA TELA, E SALVA O GRAFICO NA PASTA APÓS FECHAR A JANELA ###
 
@@ -140,8 +142,6 @@ for var in numerical_vars:
 # Tipo de Visualização  
 sns.set(style="whitegrid")  
 
-# Caminho para salvar os gráficos  
-caminho_salvar = "/home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao/banco/img/"  
 
 # Loop para plotar e salvar histogramas  
 for var in numerical_vars:  

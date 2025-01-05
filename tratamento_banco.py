@@ -54,8 +54,8 @@ print(dados1[['peso_antes', 'peso_depois', 'peso_diferenca']].dtypes)
 
 
 # Contar valores nulos
-null_counts = dados1.isnull().sum()
 print('\nContagem de valores nulls em cada coluna:')
+null_counts = dados1.isnull().sum()
 print(null_counts)
 
 
