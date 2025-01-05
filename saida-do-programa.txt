@@ -1,6 +1,10 @@
 
-
-
+UTFPR - Campis Cornélio Procópio
+Disciplina: Linguagem de Programação
+Docente: Prof. Dr. Silvio sanches
+Acadêmicos:
+Hudson Souza
+Hugo Silva
 
 #----------------------------------------
 ### PARTE 1 - TRATAMENTO DOS DADOS
