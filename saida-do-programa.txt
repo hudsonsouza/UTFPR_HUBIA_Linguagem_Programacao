@@ -432,6 +432,7 @@ Caminho do arquivo: /home/hudson/hudson2024/insync/site/miniconda3/projetos/UTFP
 
 
 
+
 #-----------------------------------------
 ### PARTE 2 - ANALISE DOS DADOS COM NUMPY
 
@@ -486,9 +487,6 @@ Variação Função Cardíaca - Média: 45.98, Mediana: 47.00, Desvio Padrão: 2
 Variação Saturação Oxigênio - Média: -2.07, Mediana: -2.00, Desvio Padrão: 1.62
 Variação AR no Cilindro - Média: -145.99, Mediana: -140.00, Desvio Padrão: 38.67
 (base) hudson [~/hudson2024/insync/site/miniconda3/projetos/UTFPR_HUBIA_Linguagem_Programacao] $ 
-
-
-
 
 
 
